@@ -66,22 +66,27 @@ class File:
     def getRow(self, id):
         return
 
-template = sys.argv[1]
 
-f = File(template, 'excel')
-f.open()
+if __name__ == "__main__":
 
-entries = f.sheet['Text']
-print(entries.get(1.10))
+    template = sys.argv[1]
 
-print(f.sheet['Text'][1.10])
+    f = File(template, 'excel')
+    f.open()
 
-wp = Webpage('Chrome')
-wp.openUrl('https://selenium-python.readthedocs.io/getting-started.html')
+    print(f.sheet)
 
-wp.setActiveElement(By.NAME, 'q').send_keys('potato')
+    entries = f.sheet['Text']
+    print(entries.get(1.10))
 
-wp.browser
+    print(f.sheet['Text'][1.10])
 
-while not wp.browser.title.startswith('Search'):
-    continue
+    wp = Webpage('Edge')
+    wp.openUrl('https://selenium-python.readthedocs.io/getting-started.html')
+
+    wp.setActiveElement(By.NAME, 'q').send_keys('potato')
+
+    wp.browser
+
+    while not wp.browser.title.startswith('Search'):
+        continue
